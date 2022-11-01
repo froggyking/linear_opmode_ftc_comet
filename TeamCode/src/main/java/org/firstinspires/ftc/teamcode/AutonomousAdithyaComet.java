@@ -13,6 +13,7 @@ public class AutonomousAdithyaComet extends LinearOpMode {
     private DcMotor front_right;
     private DcMotor back_left;
     private DcMotor back_right;
+    private DcMotor slide;
 
     @Override
     public void runOpMode(){
@@ -21,10 +22,11 @@ public class AutonomousAdithyaComet extends LinearOpMode {
         back_right = hardwareMap.dcMotor.get("back_right");
         front_left = hardwareMap.dcMotor.get("front_left");
         back_left = hardwareMap.dcMotor.get("back_left");
-
+        slide = hardwareMap.dcMotor.get("slide");
 
         front_right.setDirection(DcMotorSimple.Direction.REVERSE);
         back_right.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
 
 
@@ -32,22 +34,25 @@ public class AutonomousAdithyaComet extends LinearOpMode {
 
         while (opModeIsActive()){
 
-           moveLeft(0.75);
-           sleep(800);
-           driveForward(0.75);
-           sleep(800);
-           moveRight(0.75);
-           sleep(800);
-           driveForward(0.75);
-           sleep(800);
-           moveLeft(0.75);
-           sleep(800);
-           driveForward(0.75);
-           sleep(800);
-           moveRight(0.75);
-           sleep(800);
-           driveForward(0.75);
-           sleep(800);
+            driveForward(0.5);
+            sleep(1500);
+//            driveForward(0.5);
+//            sleep(500);
+//            driveForward(0.5);
+//            sleep(500);
+            TotalStop();
+            front_left.setPower(-0.5);
+            back_left.setPower(0.5);
+            sleep(800);
+            TotalStop();
+            liftSlide(0.5);
+            sleep(800);
+            TotalStop();
+
+            stop();
+
+
+
 
 
         }
@@ -78,8 +83,18 @@ public class AutonomousAdithyaComet extends LinearOpMode {
         back_right.setPower(-power);
         back_left.setPower(power);
     }
+    public void liftSlide (double power){
+        slide.setPower(power);
+    }
+    public void downSlide (double power){
+        slide.setPower(-power);
+
+    }
     public void TotalStop(){
-        sleep(1000);
-        stop();
+        front_right.setPower(0);
+        front_left.setPower(0);
+        back_right.setPower(0);
+        back_left.setPower(0);
+
     }
 }
