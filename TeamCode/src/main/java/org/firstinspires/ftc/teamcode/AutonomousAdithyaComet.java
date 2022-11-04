@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous(name = "AutonomousAdithyaComet")
 public class AutonomousAdithyaComet extends LinearOpMode {
@@ -14,6 +15,7 @@ public class AutonomousAdithyaComet extends LinearOpMode {
     private DcMotor back_left;
     private DcMotor back_right;
     private DcMotor slide;
+    private Servo claw;
 
     @Override
     public void runOpMode(){
@@ -23,6 +25,7 @@ public class AutonomousAdithyaComet extends LinearOpMode {
         front_left = hardwareMap.dcMotor.get("front_left");
         back_left = hardwareMap.dcMotor.get("back_left");
         slide = hardwareMap.dcMotor.get("slide");
+        claw = hardwareMap.servo.get("claw");
 
         front_right.setDirection(DcMotorSimple.Direction.REVERSE);
         back_right.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -43,20 +46,23 @@ public class AutonomousAdithyaComet extends LinearOpMode {
             TotalStop();
             front_left.setPower(-0.5);
             back_left.setPower(0.5);
-            sleep(800);
+            sleep(850);
             TotalStop();
             liftSlide(0.5);
-            sleep(4500);
+            sleep(6000);
+            TotalStop();
+            openClaw(-0.75);
+            sleep(800);
             TotalStop();
             downSlide(0.5);
-            sleep(4000);
+            sleep(3500);
             TotalStop();
             front_left.setPower(0.5);
             back_left.setPower(-0.5);
-            sleep(750);
+            sleep(800);
             TotalStop();
             driveBackward(0.5);
-            sleep(1500);
+            sleep(1000);
             TotalStop();
 
             stop();
@@ -94,11 +100,17 @@ public class AutonomousAdithyaComet extends LinearOpMode {
         back_left.setPower(power);
     }
     public void liftSlide (double power){
-        slide.setPower(-power);
+        slide.setPower(power);
     }
     public void downSlide (double power){
-        slide.setPower(power);
+        slide.setPower(-power);
 
+    }
+    public void closeClaw (double power){
+        claw.setPosition(power);
+    }
+    public void openClaw (double power){
+        claw.setPosition(-power);
     }
     public void TotalStop(){
         front_right.setPower(0);
