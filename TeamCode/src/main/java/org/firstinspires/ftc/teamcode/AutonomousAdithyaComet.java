@@ -38,28 +38,29 @@ public class AutonomousAdithyaComet extends LinearOpMode {
         while (opModeIsActive()){
 
             driveForward(0.5);
-            sleep(1500);
+            sleep(1600);
 //            driveForward(0.5);
 //            sleep(500);
 //            driveForward(0.5);
 //            sleep(500);
             TotalStop();
-            front_left.setPower(-0.5);
-            back_left.setPower(0.5);
-            sleep(850);
+            moveRight(0.5);
+            sleep(600);
+            TotalStop();
+            driveForward(0.5);
+            sleep(100);
             TotalStop();
             liftSlide(0.5);
-            sleep(6000);
+            sleep(6500);
             TotalStop();
-            openClaw(-0.75);
-            sleep(800);
+            openClaw(-0.5);
+            sleep(900);
             TotalStop();
             downSlide(0.5);
-            sleep(3500);
+            sleep(4000);
             TotalStop();
-            front_left.setPower(0.5);
-            back_left.setPower(-0.5);
-            sleep(800);
+            moveLeft(0.5);
+            sleep(650);
             TotalStop();
             driveBackward(0.5);
             sleep(1000);
@@ -106,11 +107,11 @@ public class AutonomousAdithyaComet extends LinearOpMode {
         slide.setPower(-power);
 
     }
-    public void closeClaw (double power){
-        claw.setPosition(power);
+    public void openClaw(double position){
+        claw.setPosition(position);
     }
-    public void openClaw (double power){
-        claw.setPosition(-power);
+    public void closeClaw(double position){
+        claw.setPosition(-position);
     }
     public void TotalStop(){
         front_right.setPower(0);
