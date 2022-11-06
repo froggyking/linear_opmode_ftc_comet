@@ -36,7 +36,6 @@ public class AutonomousAdithyaComet extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()){
-
             driveForward(0.5);
             sleep(1600);
 //            driveForward(0.5);
@@ -48,22 +47,25 @@ public class AutonomousAdithyaComet extends LinearOpMode {
             sleep(600);
             TotalStop();
             driveForward(0.5);
-            sleep(100);
+            sleep(75);
             TotalStop();
-            liftSlide(0.5);
-            sleep(6500);
+            liftSlide(0.45);
+            sleep(8750);
+            TotalStop();
+            driveForward(0.2);
+            sleep(100);
             TotalStop();
             openClaw(-0.5);
             sleep(900);
             TotalStop();
-            downSlide(0.5);
-            sleep(4000);
+            downSlide(0.45);
+            sleep(6250);
             TotalStop();
             moveLeft(0.5);
-            sleep(650);
+            sleep(550);
             TotalStop();
             driveBackward(0.5);
-            sleep(1000);
+            sleep(1100);
             TotalStop();
 
             stop();
