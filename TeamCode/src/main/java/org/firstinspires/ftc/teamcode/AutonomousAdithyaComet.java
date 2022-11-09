@@ -62,7 +62,7 @@ public class AutonomousAdithyaComet extends LinearOpMode {
             sleep(900);
             TotalStopServo();
             driveBackward(0.5);
-            sleep(225);
+            sleep(175);
             TotalStop();
             downSlide(0.45);
             sleep(6250);
