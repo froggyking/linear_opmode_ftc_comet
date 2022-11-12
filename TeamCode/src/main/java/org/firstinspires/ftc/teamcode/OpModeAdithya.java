@@ -43,10 +43,11 @@ public class OpModeAdithya extends LinearOpMode{
 
 
 
-            front_left.setPower(gamepad1Y + gamepad1X);
-            front_right.setPower(gamepad1Y + gamepad1X);
-            back_left.setPower(-gamepad1Y - gamepad1X);
-            back_right.setPower(-gamepad1Y - gamepad1X);
+            front_left.setPower(-gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x);
+            back_left.setPower(gamepad1.left_stick_y-gamepad1.left_stick_x+gamepad1.right_stick_x);
+            front_right.setPower(-gamepad1.left_stick_y-gamepad1.left_stick_x-gamepad1.right_stick_x);
+            back_right.setPower(gamepad1.left_stick_y-gamepad1.left_stick_x+gamepad1.right_stick_x);
+
 
 
 
@@ -55,32 +56,24 @@ public class OpModeAdithya extends LinearOpMode{
             back_left.setPower(-gamepad2Y);
             front_right.setPower(-gamepad2Y);
 //this below is the standard wasd movement
-            // front_left.setPower(-gp1joystick1y - gp1joystick1x + gp1joystick2x);
-            // back_left.setPower(-gp1joystick1y - gp1joystick1x - gp1joystick2x);
-            // back_right.setPower(gp1joystick1y + gp1joystick1x - gp1joystick2x);
-            // front_right.setPower(gp1joystick1y + gp1joystick1x + gp1joystick2x);
+
 
             // front_left.setPower(-gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x);
             // back_left.setPower(-gamepad1.left_stick_y-gamepad1.left_stick_x-gamepad1.right_stick_x);
             // front_right.setPower(-gamepad1.left_stick_y+gamepad1.left_stick_x-gamepad1.right_stick_x);
             // back_right.setPower(-gamepad1.left_stick_y-gamepad1.left_stick_x+gamepad1.right_stick_x);
-            // slide.setPower(-gamepad2.left_stick_y);
 
-            if (gamepad2.x) {
-                slide.setPower(1);
-            }
-            if (gamepad2.y) {
-                slide.setPower(-1);
-            }
-            if (gamepad2.right_stick_button){
-                slide.setPower(0);
-            }
+
+
+            slide.setPower(gamepad2.left_stick_y);
+
+            slide.setPower(-gamepad2.left_stick_y);
 
             if (gamepad2.a){
                 claw.setPosition(0); //open
             }
             if (gamepad2.b){
-                claw.setPosition(0.05); //close
+                claw.setPosition(0.1); //close
             }
 
             // if (gamepad2.dpad_up){
