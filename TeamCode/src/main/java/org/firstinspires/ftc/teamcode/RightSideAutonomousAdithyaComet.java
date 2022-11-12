@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name = "AutonomousAdithyaComet")
-public class AutonomousAdithyaComet extends LinearOpMode {
+@Autonomous(name = "RightSideAutonomousAdithyaComet")
+public class RightSideAutonomousAdithyaComet extends LinearOpMode {
 
     private DcMotor front_left;
     private DcMotor front_right;
@@ -36,11 +36,11 @@ public class AutonomousAdithyaComet extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()){
-            closeClaw(0.5);
-            sleep(1000);
+            closeClaw(0.3);
+            sleep(800);
             TotalStop();
             driveForward(0.5);
-            sleep(1700);
+            sleep(1950);
 //            driveForward(0.5);
 //            sleep(500);
 //            driveForward(0.5);
@@ -52,17 +52,17 @@ public class AutonomousAdithyaComet extends LinearOpMode {
             driveForward(0.5);
             sleep(75);
             TotalStop();
-            liftSlide(0.45);
-            sleep(9050);
+            liftSlide(0.6);
+            sleep(5500);
             TotalStop();
             driveForward(0.2);
-            sleep(125);
+            sleep(210);
             TotalStop();
             openClaw(-0.5);
             sleep(900);
             TotalStopServo();
             driveBackward(0.5);
-            sleep(175);
+            sleep(160);
             TotalStop();
             downSlide(0.45);
             sleep(6250);
@@ -71,7 +71,7 @@ public class AutonomousAdithyaComet extends LinearOpMode {
             sleep(600);
             TotalStop();
             driveBackward(0.5);
-            sleep(1100);
+            sleep(1000);
             TotalStop();
 
             stop();
