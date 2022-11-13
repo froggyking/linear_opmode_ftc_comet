@@ -36,47 +36,33 @@ public class RightSideAutonomousAdithyaComet extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()){
+
             closeClaw(0.3);
             sleep(800);
             TotalStop();
-            driveForward(0.5);
-            sleep(1950);
-//            driveForward(0.5);
-//            sleep(500);
-//            driveForward(0.5);
-//            sleep(500);
-            TotalStop();
             moveRight(0.5);
-            sleep(550);
+            sleep(500);
             TotalStop();
             driveForward(0.5);
-            sleep(75);
+            sleep(185);
             TotalStop();
             liftSlide(0.6);
-            sleep(5500);
+            sleep(1500);
             TotalStop();
-            driveForward(0.2);
-            sleep(210);
-            TotalStop();
-            openClaw(-0.5);
-            sleep(900);
-            TotalStopServo();
             driveBackward(0.5);
-            sleep(160);
+            sleep(155);
             TotalStop();
-            downSlide(0.45);
-            sleep(6250);
+            downSlide(0.6);
+            sleep(700);
             TotalStop();
             moveLeft(0.5);
-            sleep(600);
+            sleep(300);
             TotalStop();
-            driveBackward(0.5);
-            sleep(1000);
+            driveForward(0.5);
+            sleep(685);
             TotalStop();
 
             stop();
-
-
 
 
 

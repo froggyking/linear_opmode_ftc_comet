@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -16,9 +17,10 @@ public class leftSideAutonomousAdithyaComet extends LinearOpMode {
     private DcMotor back_right;
     private DcMotor slide;
     private Servo claw;
+    ColorSensor color_sensor;
 
     @Override
-    public void runOpMode(){
+    public void runOpMode() throws InterruptedException (){
 
         front_right = hardwareMap.dcMotor.get("front_right");
         back_right = hardwareMap.dcMotor.get("back_right");
@@ -26,6 +28,8 @@ public class leftSideAutonomousAdithyaComet extends LinearOpMode {
         back_left = hardwareMap.dcMotor.get("back_left");
         slide = hardwareMap.dcMotor.get("slide");
         claw = hardwareMap.servo.get("claw");
+        color_sensor = hardwareMap.colorSensor.get(color_sensor);
+
 
         front_right.setDirection(DcMotorSimple.Direction.REVERSE);
         back_right.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -36,45 +40,35 @@ public class leftSideAutonomousAdithyaComet extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()){
-            closeClaw(0.5);
-            sleep(1000);
-            TotalStop();
-            driveForward(0.5);
-            sleep(1850);
-//            driveForward(0.5);
-//            sleep(500);
-//            driveForward(0.5);
-//            sleep(500);
+
+            closeClaw(0.3);
+            sleep(800);
             TotalStop();
             moveLeft(0.5);
-            sleep(550);
+            sleep(500);
             TotalStop();
             driveForward(0.5);
-            sleep(75);
+            sleep(185);
             TotalStop();
             liftSlide(0.6);
-            sleep(5800);
+            sleep(1500);
             TotalStop();
-            driveForward(0.2);
-            sleep(125);
-            TotalStop();
-            openClaw(-0.5);
-            sleep(900);
-            TotalStopServo();
             driveBackward(0.5);
             sleep(155);
             TotalStop();
-            downSlide(0.45);
-            sleep(6250);
+            downSlide(0.6);
+            sleep(700);
             TotalStop();
             moveRight(0.5);
-            sleep(600);
+            sleep(500);
             TotalStop();
-            driveBackward(0.5);
-            sleep(1100);
+            driveForward(0.5);
+            sleep(685);
             TotalStop();
 
             stop();
+
+
 
 
 
