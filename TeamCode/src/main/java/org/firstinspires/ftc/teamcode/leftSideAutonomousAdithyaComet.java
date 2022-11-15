@@ -20,7 +20,7 @@ public class leftSideAutonomousAdithyaComet extends LinearOpMode {
     ColorSensor color_sensor;
 
     @Override
-    public void runOpMode() throws InterruptedException (){
+    public void runOpMode() throws InterruptedException{
 
         front_right = hardwareMap.dcMotor.get("front_right");
         back_right = hardwareMap.dcMotor.get("back_right");
@@ -28,7 +28,8 @@ public class leftSideAutonomousAdithyaComet extends LinearOpMode {
         back_left = hardwareMap.dcMotor.get("back_left");
         slide = hardwareMap.dcMotor.get("slide");
         claw = hardwareMap.servo.get("claw");
-        color_sensor = hardwareMap.colorSensor.get(color_sensor);
+        //color_sensor = hardwareMap.get(ColorSensor.class, "color_sensor");
+        color_sensor = hardwareMap.colorSensor.get("color_sensor");
 
 
         front_right.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -40,31 +41,35 @@ public class leftSideAutonomousAdithyaComet extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()){
+            if (color_sensor.red() > 650){
+                //-----------------
+                driveForward(0.5);
+                sleep(500);
+                TotalStop();
+            }
+            if (color_sensor.blue() > 650){
+                //-------------
+                driveForward(0.5);
+                sleep(500);
+                TotalStop();
+                moveLeft(0.5);
+                sleep(650);
+                TotalStop();
+            }
+            if (color_sensor.green() > 650){
+                //--------------
+                driveForward(0.5);
+                sleep(500);
+                TotalStop();
+                moveRight(0.5);
+                sleep(650);
+                TotalStop();
+            }
 
-            closeClaw(0.3);
-            sleep(800);
-            TotalStop();
-            moveLeft(0.5);
-            sleep(500);
-            TotalStop();
-            driveForward(0.5);
-            sleep(185);
-            TotalStop();
-            liftSlide(0.6);
-            sleep(1500);
-            TotalStop();
-            driveBackward(0.5);
-            sleep(155);
-            TotalStop();
-            downSlide(0.6);
-            sleep(700);
-            TotalStop();
-            moveRight(0.5);
-            sleep(500);
-            TotalStop();
-            driveForward(0.5);
-            sleep(685);
-            TotalStop();
+            telemetry.addData("red: ", color_sensor.red());
+            telemetry.addData("blue: ", color_sensor.blue());
+            telemetry.addData("green: ", color_sensor.green());
+            telemetry.update();
 
             stop();
 

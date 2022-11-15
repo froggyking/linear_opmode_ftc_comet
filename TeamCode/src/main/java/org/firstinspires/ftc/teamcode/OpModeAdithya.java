@@ -64,8 +64,9 @@ public class OpModeAdithya extends LinearOpMode{
             // back_right.setPower(-gamepad1.left_stick_y-gamepad1.left_stick_x+gamepad1.right_stick_x);
 
 
-
-            slide.setPower(gamepad2.left_stick_y);
+            if (gamepad2.y) {
+                slide.setPower(0.88);
+            }
 
             slide.setPower(-gamepad2.left_stick_y);
 
@@ -74,7 +75,9 @@ public class OpModeAdithya extends LinearOpMode{
             }
             if (gamepad2.b){
                 claw.setPosition(0.1); //close
+
             }
+            telemetry.addData("Slide", slide);
 
             // if (gamepad2.dpad_up){
             //     num = num+0.0001;
